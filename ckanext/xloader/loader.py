@@ -12,7 +12,6 @@ import psycopg2
 from six import text_type as str
 from six.moves import zip
 from tabulator import Stream, TabulatorException
-from unidecode import unidecode
 
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
@@ -375,9 +374,9 @@ def encode_headers(headers):
     encoded_headers = []
     for header in headers:
         try:
-            encoded_headers.append(unidecode(header))
+            encoded_headers.append(header)
         except AttributeError:
-            encoded_headers.append(unidecode(str(header)))
+            encoded_headers.append(str(header))
 
     return encoded_headers
 
